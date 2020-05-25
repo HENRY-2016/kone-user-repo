@@ -1,0 +1,687 @@
+
+
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<title> USER | HOME</title>
+<script src="static/js/others/neworders.js" ></script>
+<script src="static/js/others/main.js" ></script>
+
+<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<link rel="stylesheet" type="text/css" href="static/css/w3.css">
+
+<script>
+function Init_chips_new_orders_div (){Show_chips_new_orders_div (); Load_staffs ("chips-staff");}
+function Init_piloa_new_orders_div (){Show_piloa_new_orders_div (); Load_staffs ("piloa-staff");}
+function Init_soft_drinks_new_orders_div (){Show_soft_drinks_new_orders_div ();  Load_staffs ("soft-drink-staff");}
+function Init_fresh_drinks_new_orders_div (){Show_fresh_drinks_new_orders_div (); Load_staffs ("fresh-drink-staff");}
+function Init_salads_new_orders_div (){Show_salads_new_orders_div (); Load_staffs ("salads-staff");}
+function Init_chicken_new_orders_div (){Show_chicken_new_orders_div ();  Load_staffs ("chicken-staff");}
+function Init_luwombo_new_orders_div (){Show_luwombo_new_orders_div (); Load_staffs ("luwombo-staff");}
+function Init_localdishe_new_orders_div (){Show_localdishe_new_orders_div ();  Load_staffs ("localdishe-staff");}
+function Init_breakfast_other_new_orders_div (){Show_breakfast_other_new_orders_div (); Load_staffs ("breakfast-other-staff");}
+function Init_breakfast_egg_new_orders_div (){Show_breakfast_egg_new_orders_div ();  Load_staffs ("breakfast-egg-staff");}
+function Init_breakfast_teas_new_orders_div (){Show_breakfast_teas_new_orders_div (); Load_staffs ("breakfast-teas-staff");}
+function Init_beverages_new_orders_div (){Show_beverages_new_orders_div (); Load_staffs ("beverages-staff");}
+function Init_goatmeat_new_orders_div (){Show_goatmeat_new_orders_div ();  Load_staffs ("goatmeat-staff");}
+function Init_beefliver_new_orders_div (){Show_beefliver_new_orders_div ();  Load_staffs ("beefliver-staff");}
+
+
+function NewOrdersLogic (){ Show_orders_panel_div ();}
+function do_logic ()
+{
+    // update_chips_status_id ();
+    Fetch_Customer_New_Orders ();
+    Hide_all_Divs ();
+}
+</script>
+</head>
+<body  class="main_body" onload="do_logic ()">
+<div id="main-header">
+    <div  id= "Navigetion" class="header">
+            <!-- ======= CLOSE ====== -->
+        <span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+            <div id="our-avenues-menu-label-div">
+                <label class="our-avenues-label" > Our Avenues</label>
+            </div><br>
+            <div id="menu-items-div">
+                <center>
+                    <a><label onclick="Load_food_view ()">Food</label></a>
+                    <a><label onclick="Load_chips_view ()">Chips</label></a>
+                    <a><label onclick="Load_piloa_view ()">Piloa</label></a>
+                    <a><label onclick="Load_drinks_view ()">Drinks</label></a>
+                    <a><label onclick="Load_salads_view ()">Salads</label></a>
+                    <a><label onclick="Load_chicken_view ()">Chicken</label></a>
+                    <a><label onclick="Load_luwombo_view ()">Luwombo</label></a>
+                    <a><label onclick="Load_local_dish_view ()">Local Dish</label></a>
+                    <a><label onclick="Load_break_fast_view ()">Break Fast</label></a>
+                    <a><label onclick="Load_beverages_view_ ()">Beverages</label></a>
+                    <a><label onclick="Load_goat_meat_view ()">Goat's Meat</label></a>
+                    <a><label onclick="Load_beef_liver_view ()">Beef / Liver</label></a>
+                </center>
+            </div>
+            <br>
+            <div id="our-avenues-menu-label-div">
+                <label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
+            </div><br>
+    </div>
+    <div id="NaviDiv">
+        <label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+        <label class="kone-label">"Taste the difference"</label>
+    </div>
+<script>
+function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
+function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
+</script>
+
+</div> <!-- main-header-->
+
+<div id="main-body" > <!-- Begin main-body div -->
+    <br>
+    <center>
+        <table class=" w3-blue status-table">
+            <tr class="table-headings-tr"> <th>Avenues</th><th>Orders </th> </tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Chips</td> <td class="orders-status-td"><span id="chips-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Piloa</td> <td class="orders-status-td"><span  id="piloa-status-id" class="w3-badge w3-green w3-padding-small" >0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Salads</td> <td class="orders-status-td"><span  id="salads-status-id" class="w3-badge w3-green w3-padding-small" >0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Chicken</td> <td class="orders-status-td"><span id="chicken-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Luwombo</td> <td class="orders-status-td"><span id="luwombo-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Goat Meat</td> <td class="orders-status-td"><span id="goatmeat-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Beverages</td> <td class="orders-status-td"><span id="beverages-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Beef Liver</td> <td class="orders-status-td"><span id="beefliver-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Local Dishe</td> <td class="orders-status-td"><span id="localdishe-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Soft Drinks </td> <td class="orders-status-td"><span id="softdrink-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Fresh Drinks </td> <td class="orders-status-td"><span id="freshdrink-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Egg</td> <td class="orders-status-td"><span id="breakfast-egg-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Teas</td> <td class="orders-status-td"><span id="breakfast-teas-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Other</td> <td class="orders-status-td"><span id="breakfast-other-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+        </table>
+    </center><br>
+    <center><button class="menu_btns fontstyles" onclick="NewOrdersLogic ()"> New Orders</button></center>
+    <div id="orders-panel-div"><br>
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_chips_new_orders_div ()"> Chips</button></center><br>
+        <div id="chips-new-orders-div">
+            <div id="chips-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="chips-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id03').style.display='block'"> Assign </button></center> <br>
+            <div id="id03" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id03').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to chips order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/chips_staff_assign_staff_name" method="POST" id="chips-assign-form">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="chips-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_piloa_new_orders_div ()"> Piloa</button></center><br>
+        <div id="piloa-new-orders-div">
+            <div id="piloa-view-new-orders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="piloa-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id04').style.display='block'"> Assign </button></center><br>
+            <div id="id04" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id04').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to piloa order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/piloa_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="piloa-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_soft_drinks_new_orders_div ()">Soft Drinks</button></center><br>
+        <div id="soft-drinks-new-orders-div">
+            <div id="soft-drinks-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="soft-drinks-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id05').style.display='block'"> Assign </button></center><br>
+            <div id="id05" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id05').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to drinks order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/softdrink_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="soft-drink-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_fresh_drinks_new_orders_div ()">Fresh Drinks</button></center><br>
+        <div id="fresh-drinks-new-orders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="fresh-drinks-tbody"></tbody>
+                </table>
+                </center><br>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id055').style.display='block'"> Assign </button></center><br>
+            <div id="id055" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id055').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to fresh drinks order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/freshdrink_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="fresh-drink-staff" placeholder="staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_salads_new_orders_div ()"> Salads</button></center><br>
+        <div id="salads-new-orders-div">
+            <div id="salads-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="salads-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id06').style.display='block'"> Assign </button></center><br>
+            <div id="id06" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id06').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to salads order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/salads_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="salads-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_chicken_new_orders_div ()"> Chicken</button></center><br>
+        <div id="chicken-new-orders-div">
+            <div id="chips-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="chicken-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id07').style.display='block'"> Assign </button></center><br>
+            <div id="id07" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id07').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to chicken order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/chicken_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="chicken-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_luwombo_new_orders_div ()"> Luwombo</button></center><br>
+        <div id="luwombo-new-orders-div">
+            <div id="luwombo-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="luwombo-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id08').style.display='block'"> Assign </button></center><br>
+            <div id="id08" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id08').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to luwombo order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/luwombo_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="luwombo-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_localdishe_new_orders_div ()"> Local Dishe</button></center><br>
+        <div id="localdishe-new-orders-div">
+            <div id="localdishe-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="localdishe-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id09').style.display='block'"> Assign </button></center> <br>
+            <div id="id09" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id09').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label">Assigning staff to local dishe order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/localdishe_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="localdishe-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_breakfast_other_new_orders_div ()"> BF:Other</button></center><br>
+        <div id="breakfast-other-new-orders-div">
+            <div id="breakfast-other-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="breakfast-other-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id010').style.display='block'"> Assign </button></center><br>
+            <div id="id010" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id010').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to break fast other order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/breakfast_other_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="breakfast-other-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_breakfast_egg_new_orders_div ()"> BF: Egg</button></center><br>
+        <div id="breakfast-egg-new-orders-div">
+            <div id="breakfast-egg-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="breakfast-egg-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id0110').style.display='block'"> Assign </button></center><br>
+            <div id="id0110" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id0110').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to break fast order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/breakfast_egg_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="breakfast-egg-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_breakfast_teas_new_orders_div ()"> BF: Teas</button></center><br>
+        <div id="breakfast-teas-new-orders-div">
+            <div id="breakfast-teas-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="breakfast-teas-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id0111').style.display='block'"> Assign </button></center><br>
+            <div id="id0111" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id0111').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to break fast teas order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/breakfast_teas_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="breakfast-teas-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_beverages_new_orders_div ()"> Beverages</button></center><br>
+        <div id="beverages-new-orders-div">
+            <div id="beverages-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="beverages-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id011').style.display='block'"> Assign </button></center><br>
+            <div id="id011" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id011').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to beverages order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/beverages_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="beverages-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_goatmeat_new_orders_div ()"> Goat's Meat</button></center><br>
+        <div id="goatmeat-new-orders-div">
+            <div id="goatmeat-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="goatmeat-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id012').style.display='block'"> Assign </button></center><br>
+            <div id="id012" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id012').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to Goat's meat order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/goatmeat_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="goatmeat-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+        <center> <button class="admin-btn fontstyles" onclick="Init_beefliver_new_orders_div ()"> Beef / Liver</button></center><br>
+        <div id="beefliver-new-orders-div">
+            <div id="beefliver-view-new-oders-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="beefliver-tbody"></tbody>
+                </table>
+                </center><br>
+            </div>
+            <center><button class="assign-btn fontstyles" onclick="document.getElementById('id013').style.display='block'"> Assign </button></center><br>
+            <div id="id013" class="w3-modal">
+                <div class="w3-modal-content w3-animate-top w3-card-4">
+                    <header class="w3-container w3-teal">
+                        <span onclick="document.getElementById('id013').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <label class="assign-staff-label ">Assigning staff to Beef Liver order</label>
+                    </header>
+                    <div class="w3-container">
+                        <center><br>
+                            <form action="http://192.168.43.140:6060/beefliver_staff_assign_staff_name" method="POST">
+                                <label for="uname"><b>Number</label><br>
+                                <input type="text" placeholder="Order No" name="key_num" class="form_input" autocomplete="off" required>
+
+                                <label for="uname"><b>Staff</label><br>
+                                <select id="beefliver-staff" placeholder="Staff Name" name="staff_name" class="form_input" autocomplete="off" required></select>
+
+                                <label for="uname"><b>Password</label><br>
+                                <input type="password" placeholder="Your PIN" name="staff_pin" class="form_input" autocomplete="off" required><br>
+
+                                <button type="submit" class="submit-btn" > Done</button><br>
+                            </form><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!--End orders-panel-div -->
+
+        <br><br>
+        <center><button class="menu_btns fontstyles" onclick="Load_orders_view ()">Orders</button></center>
+</div><br>
+
+</body>
+</html>

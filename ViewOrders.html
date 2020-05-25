@@ -1,0 +1,2141 @@
+
+
+<html>
+<head>
+<meta charset="utf-8">
+<title> User-View-Orders</title>
+<script src="static/js/others/main.js" ></script>
+<script src="static/js/others/main_view.js"></script>
+
+<script src="static/js/orders/chips_received.js"></script>
+<script src="static/js/orders/piloa_received.js"></script>
+<script src="static/js/orders/softdrinks_received.js"></script>
+<script src="static/js/orders/freshdrinks_received.js"></script>
+<script src="static/js/orders/salads_received.js"></script>
+<script src="static/js/orders/chicken_received.js"></script>
+<script src="static/js/orders/luwombo_received.js"></script>
+<script src="static/js/orders/localdishe_received.js"></script>
+<script src="static/js/orders/breakfast_other_received.js"></script>
+<script src="static/js/orders/breakfast_egg_received.js"></script>
+<script src="static/js/orders/breakfast_teas_received.js"></script>
+<script src="static/js/orders/beverages_received.js"></script>
+<script src="static/js/orders/goatmeat_received.js"></script>
+<script src="static/js/orders/beefliver_received.js"></script>
+
+    <script>
+function Set_Up_Every_Thing ()
+{
+    Hide_view_orders_divs ();
+    Load_Chips_Offline_Data ();
+    Load_Piloa_Offline_Data ();
+    Load_Drinks_Offline_Data ();
+    Load_Salads_Offline_Data ();
+    Load_Chicken_Offline_Data ();
+    Load_Luwombo_Offline_Data ();
+    Load_Localdishe_Offline_Data ();
+    Load_Breakfast_Egg_Offline_Data ();
+    Load_Breakfast_Other_Offline_Data ();
+    Load_Breakfast_Teas_Offline_Data ();
+    Load_Beverages_Offline_Data ();
+    Load_Goatmeat_Offline_Data ();
+    Load_Beefliver_Offline_Data ()
+}
+    </script>
+        <link rel="stylesheet" href="static/css/main.css">
+        <link rel="stylesheet" href="static/css/w3.css">
+    </head>
+
+<body onload="Set_Up_Every_Thing ()" class="main_body">
+    <div  id= "Navigetion" class="header">
+        <!-- ======= CLOSE ====== -->
+    <span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+        <div id="our-avenues-menu-label-div">
+            <label class="our-avenues-label" onclick="Load_index ()" > Home</label>
+        </div><br>
+        <div id="our-avenues-menu-label-div">
+            <label class="our-avenues-label" > Our Avenues</label>
+        </div><br>
+        <div id="menu-items-div">
+            <center>
+                <a><label onclick="Load_food_view ()">Food</label></a>
+                <a><label onclick="Load_chips_view ()">Chips</label></a>
+                <a><label onclick="Load_piloa_view ()">Piloa</label></a>
+                <a><label onclick="Load_drinks_view ()">Drinks</label></a>
+                <a><label onclick="Load_salads_view ()">Salads</label></a>
+                <a><label onclick="Load_chicken_view ()">Chicken</label></a>
+                <a><label onclick="Load_luwombo_view ()">Luwombo</label></a>
+                <a><label onclick="Load_local_dish_view ()">Local Dish</label></a>
+                <a><label onclick="Load_break_fast_view ()">Break Fast</label></a>
+                <a><label onclick="Load_beverages_view_ ()">Beverages</label></a>
+                <a><label onclick="Load_goat_meat_view ()">Goat's Meat</label></a>
+                <a><label onclick="Load_beef_liver_view ()">Beef / Liver</label></a>
+            </center>
+        </div>
+        <br>
+        <div id="our-avenues-menu-label-div">
+            <label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
+        </div><br>
+</div>
+<div id="NaviDiv">
+    <label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+    <label class="kone-label">"Taste the difference"</label>
+</div>
+<script>
+function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
+function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
+</script>
+
+</div> <!-- main-header-->
+        <center>
+                <!--
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @
+            @		CHIPS RECEIVED ORDERS
+            @
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+            -->
+        <br>
+        <button onclick="Show_chips_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Chips </button><br><br>
+            <div id="chips-orders-received-root-div">
+                <button onclick="show_chips_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+                    <div id="chips-orders-received-view-all-div">
+                    <button onclick=" fetch_chips_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="chips-orders-received-loader-all" class="loader"></div>
+                    <div id="chips-show-all-tbody-div">
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="chips-show-all-tbody"></tbody>
+                        </table>
+
+                        </center>
+                    </div>
+                    <button onclick="close_chips_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+                <button onclick="show_chips_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+                    <div id="chips-orders-received-date-div">
+                        <button onclick="show_chips_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                            <div id="chips-orders-received-date-today-grand-child-div" >
+                                <button onclick=" fetch_chips_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                                <div id="chips-orders-received-loader-date-today" class="loader"></div>
+                                    <div id="orders-view-by-date-today-div">
+                                        <center>
+                                        <table class=" w3-bordered user-scrolling-table">
+                                            <tbody id="chips-date-today-tbody"></tbody>
+                                        </table>
+                                    </center>
+                                    </div>
+                                <button onclick="close_chips_orders_received_date_today_grand_child_div()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                            </div><br><br>
+                        <!-- .......................................... -->
+                        <button onclick="show_chips_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                            <div id="chips-orders-received-date-grand-child-div" >
+                                <form class="orders_from_to_form" id="orders-date-date-form" >
+                                    <label>Date</label>
+                                    <input class="orders_view_form_input" type="date" name="date" onchange="fetch_chips_orders_received_date_date_data ()" ><br>
+                                </form>
+                                <button class="agency-show-btn entries_page_fonts"  ></button>
+                                <div id="chips-orders-received-loader-date-date" class="loader"></div>
+                                <div id="date-date-div" >
+                                    <center>
+                                    <table class=" w3-bordered user-scrolling-table">
+                                        <tbody id="chips-date-date-tbody"></tbody>
+                                    </table>
+                                    </center>
+                                </div>
+                                <button onclick="close_chips_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                            </div><br><br>
+                    </div>
+            <!-- ===================================================== -->
+
+                <button onclick="show_chips_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+                    <div id="chips-orders-received-from-to-div">
+                        <button  onclick="show_chips_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                        <div id="chips-orders-received-from-to-all-grand-child-div">
+                            <form class="orders_from_to_form" id="chips-from-to-form">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <label> From </label>
+                                            <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                        </td>
+                                        <td>
+                                            <label> To </label>
+                                            <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        <div id="from-to-div">
+                            <button onclick="fetch_chips_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                                <div id="chips-orders-received-loader-from-to-all" class="loader"></div>
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="chips-from-to-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            <button onclick="close_chips_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                        </div>
+                        </div><br><br><br>
+                    </div>
+
+            <!-- ===================================================== -->
+                <button onclick="show_chips_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+                    <div id="chips-orders-received-last-week-div">
+                        <button onclick="show_chips_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                            <div id="chips-orders-received-last-week-all-grand-child-div">
+                                <button onclick="fetch_chips_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                                    <div id="chips-orders-received-loader-last-week-all" class="loader"></div>
+                                    <div id="last-week-all-grand-child" >
+                                        <center>
+                                        <table class=" w3-bordered user-scrolling-table">
+                                            <tbody id="chips-last-week-all-tbody"></tbody>
+                                        </table>
+                                        </center>
+                                    </div>
+                                <button onclick="close_chips_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                            </div><br><br>
+                        </div>
+
+            <!-- ===================================================== -->
+                <button onclick="show_chips_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+                    <div id="chips-orders-received-this-month-div">
+                        <button  onclick="show_chips_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                            <div id="chips-orders-received-this-month-all-grand-child-div">
+                                <button onclick=" fetch_chips_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                            <div id="chips-orders-received-loader-this-month-all" class="loader"></div>
+                                    <center>
+                                    <table class=" w3-bordered user-scrolling-table">
+                                        <tbody id="chips-this-month-all-tbody"></tbody>
+                                    </table>
+                                    </center>
+                                <button onclick="close_chips_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                            </div><br><br>
+                    </div>
+            <!-- ===================================================== -->
+            <button onclick="show_chips_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+                <div id="chips-orders-received-last-month-div">
+                    <button onclick="show_chips_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                        <div id="chips-orders-received-last-month-by-all-grand-child-div">
+                            <button onclick="fetch_chips_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                                <div id="chips-orders-received-loader-last-month-all" class="loader"></div>
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="chips-last-month-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            <button onclick="close_chips_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                        </div>
+                </div>
+        </div>
+
+
+            <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		PILOA RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_piloa_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Piloa </button><br><br>
+        <div id="piloa-orders-received-root-div">
+            <button onclick="show_piloa_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="piloa-orders-received-view-all-div">
+            <button onclick=" fetch_piloa_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="piloa-orders-received-loader-all" class="loader"></div>
+            <div id="piloa-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="piloa-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_piloa_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_piloa_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="piloa-orders-received-date-div">
+                <button onclick="show_piloa_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="piloa-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_piloa_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="piloa-orders-received-loader-date-today" class="loader"></div>
+                            <div id="orders-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="piloa-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_piloa_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_piloa_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="piloa-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_piloa_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="piloa-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="piloa-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_piloa_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_piloa_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="piloa-orders-received-from-to-div">
+                <button  onclick="show_piloa_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="piloa-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="piloa-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_piloa_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="piloa-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="piloa-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_piloa_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_piloa_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="piloa-orders-received-last-week-div">
+                <button onclick="show_piloa_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="piloa-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_piloa_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="piloa-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="last-week-all-grand-child" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="piloa-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_piloa_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_piloa_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="piloa-orders-received-this-month-div">
+                <button  onclick="show_piloa_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="piloa-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_piloa_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="piloa-orders-received-loader-this-month-all" class="loader"></div>
+                        <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="piloa-this-month-all-tbody"></tbody>
+                            </table>
+                        </center>
+                        <button onclick="close_piloa_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_piloa_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="piloa-orders-received-last-month-div">
+            <button onclick="show_piloa_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="piloa-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_piloa_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="piloa-orders-received-loader-last-month-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="piloa-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_piloa_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		SALADS RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_salads_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Salads </button><br><br>
+        <div id="salads-orders-received-root-div">
+            <button onclick="show_salads_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="salads-orders-received-view-all-div">
+            <button onclick=" fetch_salads_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="salads-orders-received-loader-all" class="loader"></div>
+            <div id="salads-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <center><tbody id="salads-show-all-tbody"></tbody></center>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_salads_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_salads_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="salads-orders-received-date-div">
+                <button onclick="show_salads_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="salads-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_salads_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="salads-orders-received-loader-date-today" class="loader"></div>
+                            <div id="orders-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="salads-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_salads_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_salads_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="salads-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_salads_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="salads-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="salads-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_salads_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_salads_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="salads-orders-received-from-to-div">
+                <button  onclick="show_salads_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="salads-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="salads-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_salads_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="salads-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="salads-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_salads_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_salads_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="salads-orders-received-last-week-div">
+                <button onclick="show_salads_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="salads-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_salads_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="salads-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="last-week-all-grand-child" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="salads-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_salads_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_salads_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="salads-orders-received-this-month-div">
+                <button  onclick="show_salads_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="salads-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_salads_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="salads-orders-received-loader-this-month-all" class="loader"></div>
+                        <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="salads-this-month-all-tbody"></tbody>
+                            </table>
+                        </center>
+                        <button onclick="close_salads_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_salads_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="salads-orders-received-last-month-div">
+            <button onclick="show_salads_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="salads-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_salads_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="salads-orders-received-loader-last-month-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="salads-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_salads_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		CHICKEN RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_chicken_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Chicken </button><br><br>
+        <div id="chicken-orders-received-root-div">
+            <button onclick="show_chicken_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="chicken-orders-received-view-all-div">
+            <button onclick=" fetch_chicken_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="chicken-orders-received-loader-all" class="loader"></div>
+            <div id="chicken-show-all-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="chicken-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_chicken_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_chicken_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="chicken-orders-received-date-div">
+                <button onclick="show_chicken_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="chicken-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_chicken_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="chicken-orders-received-loader-date-today" class="loader"></div>
+                            <div id="chicken-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="chicken-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_chicken_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_chicken_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="chicken-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="chicken-orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_chicken_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="chicken-orders-received-loader-date-date" class="loader"></div>
+                        <div id="chicken-date-date-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="chicken-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_chicken_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_chicken_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="chicken-orders-received-from-to-div">
+                <button  onclick="show_chicken_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="chicken-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="chicken-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_chicken_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="chicken-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="chicken-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_chicken_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_chicken_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="chicken-orders-received-last-week-div">
+                <button onclick="show_chicken_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="chicken-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_chicken_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="chicken-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="chicken-last-week-all" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="chicken-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_chicken_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_chicken_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="chicken-orders-received-this-month-div">
+                <button  onclick="show_chicken_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="chicken-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_chicken_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="chicken-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="chicken-this-month-all-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="chicken-this-month-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_chicken_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_chicken_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="chicken-orders-received-last-month-div">
+            <button onclick="show_chicken_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="chicken-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_chicken_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="chicken-orders-received-loader-last-month-all" class="loader"></div>
+                        <div id="chicken-last-month-all-div">
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="chicken-last-month-tbody"></tbody>
+                        </table>
+                        </center>
+                        </div>
+                    <button onclick="close_chicken_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+        </div>
+
+                <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		LUWOMBO RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_luwombo_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Luwombo </button><br><br>
+        <div id="luwombo-orders-received-root-div">
+
+            <button onclick="show_luwombo_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="luwombo-orders-received-view-all-div">
+            <button onclick=" fetch_luwombo_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="luwombo-orders-received-loader-all" class="loader"></div>
+            <div id="luwombo-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="luwombo-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_luwombo_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_luwombo_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="luwombo-orders-received-date-div">
+                <button onclick="show_luwombo_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="luwombo-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_luwombo_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="luwombo-orders-received-loader-date-today" class="loader"></div>
+                            <div id="luwombo-orders-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="luwombo-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_luwombo_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_luwombo_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="luwombo-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="luwombo-orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_luwombo_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="luwombo-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="luwombo-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_luwombo_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_luwombo_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="luwombo-orders-received-from-to-div">
+                <button  onclick="show_luwombo_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="luwombo-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="luwombo-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_luwombo_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="luwombo-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="luwombo-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_luwombo_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_luwombo_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="luwombo-orders-received-last-week-div">
+                <button onclick="show_luwombo_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="luwombo-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_luwombo_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="luwombo-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="luwombo-last-week-all-div" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="luwombo-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_luwombo_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_luwombo_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="luwombo-orders-received-this-month-div">
+                <button  onclick="show_luwombo_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="luwombo-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_luwombo_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="luwombo-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="luwombo-this-month-all-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="luwombo-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_luwombo_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_luwombo_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="luwombo-orders-received-last-month-div">
+            <button onclick="show_luwombo_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="luwombo-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_luwombo_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="luwombo-orders-received-loader-last-month-all" class="loader"></div>
+                        <div id="luwombo-last-month-all-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="luwombo-last-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                    <button onclick="close_luwombo_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+        </div>
+                <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		BEVERAGES RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_beverages_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Beverages </button><br><br>
+        <div id="beverages-orders-received-root-div">
+            <button onclick="show_beverages_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="beverages-orders-received-view-all-div">
+            <button onclick=" fetch_beverages_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="beverages-orders-received-loader-all" class="loader"></div>
+            <div id="beverages-show-all-tbody-div">
+                <center>
+                    <table class=" w3-bordered user-scrolling-table">
+                        <tbody id="beverages-show-all-tbody"></tbody>
+                    </table>
+                </center>
+            </div>
+            <button onclick="close_beverages_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beverages_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="beverages-orders-received-date-div">
+                <button onclick="show_beverages_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="beverages-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_beverages_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beverages-orders-received-loader-date-today" class="loader"></div>
+                            <div id="beverages-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="beverages-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_beverages_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_beverages_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="beverages-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="beverages-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_beverages_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="beverages-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beverages-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_beverages_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_beverages_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="beverages-orders-received-from-to-div">
+                <button  onclick="show_beverages_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="beverages-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="beverages-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_beverages_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beverages-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="beverages-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_beverages_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beverages_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="beverages-orders-received-last-week-div">
+                <button onclick="show_beverages_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="beverages-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_beverages_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="beverages-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="beverages-last-week-div" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="beverages-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_beverages_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beverages_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="beverages-orders-received-this-month-div">
+                <button  onclick="show_beverages_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="beverages-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_beverages_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="beverages-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="beverages-this-month-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beverages-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_beverages_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_beverages_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="beverages-orders-received-last-month-div">
+            <button onclick="show_beverages_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="beverages-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_beverages_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beverages-orders-received-loader-last-month-all" class="loader"></div>
+                        <div id="beverages-last-month-div">
+                        <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beverages-last-month-all-tbody"></tbody>
+                            </table>
+                        </center>
+                        </div>
+                    <button onclick="close_beverages_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		GOAT MEAT RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_goatmeat_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Goat's Meat </button><br><br>
+        <div id="goatmeat-orders-received-root-div">
+            <button onclick="show_goatmeat_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="goatmeat-orders-received-view-all-div">
+            <button onclick=" fetch_goatmeat_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="goatmeat-orders-received-loader-all" class="loader"></div>
+            <div id="goatmeat-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="goatmeat-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_goatmeat_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_goatmeat_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="goatmeat-orders-received-date-div">
+                <button onclick="show_goatmeat_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="goatmeat-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_goatmeat_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="goatmeat-orders-received-loader-date-today" class="loader"></div>
+                            <div id="goatmeat-view-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="goatmeat-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_goatmeat_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_goatmeat_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="goatmeat-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="goatmeat-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_goatmeat_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="goatmeat-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="goatmeat-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_goatmeat_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_goatmeat_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="goatmeat-orders-received-from-to-div">
+                <button  onclick="show_goatmeat_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="goatmeat-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="goatmeat-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_goatmeat_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="goatmeat-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="goatmeat-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_goatmeat_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_goatmeat_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="goatmeat-orders-received-last-week-div">
+                <button onclick="show_goatmeat_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="goatmeat-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_goatmeat_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="goatmeat-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="goatmeat-view-last-week-div" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="goatmeat-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_goatmeat_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_goatmeat_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="goatmeat-orders-received-this-month-div">
+                <button  onclick="show_goatmeat_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="goatmeat-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_goatmeat_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="goatmeat-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="goatmeat-view-this-month-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="goatmeat-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_goatmeat_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_goatmeat_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="goatmeat-orders-received-last-month-div">
+            <button onclick="show_goatmeat_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="goatmeat-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_goatmeat_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="goatmeat-orders-received-loader-last-month-all" class="loader"></div>
+                    <div id="goatmeat-view-last-month-div" >
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="goatmeat-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    </div>
+                    <button onclick="close_goatmeat_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+        </div>
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		BEEF LIVER RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_beefliver_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Beef / Liver </button><br><br>
+        <div id="beefliver-orders-received-root-div">
+            <button onclick="show_beefliver_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="beefliver-orders-received-view-all-div">
+            <button onclick=" fetch_beefliver_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="beefliver-orders-received-loader-all" class="loader"></div>
+            <div id="beefliver-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="beefliver-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_beefliver_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beefliver_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="beefliver-orders-received-date-div">
+                <button onclick="show_beefliver_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="beefliver-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_beefliver_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beefliver-orders-received-loader-date-today" class="loader"></div>
+                            <div id="beefliver-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="beefliver-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_beefliver_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_beefliver_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="beefliver-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="beefliver-view-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_beefliver_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="beefliver-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beefliver-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_beefliver_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_beefliver_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="beefliver-orders-received-from-to-div">
+                <button  onclick="show_beefliver_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="beefliver-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="beefliver-view-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_beefliver_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beefliver-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="beefliver-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_beefliver_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beefliver_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="beefliver-orders-received-last-week-div">
+                <button onclick="show_beefliver_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="beefliver-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_beefliver_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="beefliver-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="beefliver-view-last-week-div" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="beefliver-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_beefliver_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_beefliver_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="beefliver-orders-received-this-month-div">
+                <button  onclick="show_beefliver_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="beefliver-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_beefliver_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="beefliver-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="beefliver-view-this-month-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beefliver-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_beefliver_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_beefliver_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="beefliver-orders-received-last-month-div">
+            <button onclick="show_beefliver_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="beefliver-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_beefliver_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="beefliver-orders-received-loader-last-month-all" class="loader"></div>
+                        <div id="beefliver-view-last-month-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="beefliver-last-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                    <button onclick="close_beefliver_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		LOCAL DISHE RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_localdishe_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Local Dishe </button><br><br>
+        <div id="localdishe-orders-received-root-div">
+
+            <button onclick="show_localdishe_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="localdishe-orders-received-view-all-div">
+            <button onclick=" fetch_localdishe_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="localdishe-orders-received-loader-all" class="loader"></div>
+            <div id="localdishe-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="localdishe-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_localdishe_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_localdishe_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="localdishe-orders-received-date-div">
+                <button onclick="show_localdishe_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="localdishe-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_localdishe_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="localdishe-orders-received-loader-date-today" class="loader"></div>
+                            <div id="localdishe-orders-view-by-date-today-div">
+                                <center>
+                                    <table class=" w3-bordered user-scrolling-table">
+                                        <tbody id="localdishe-date-today-tbody"></tbody>
+                                    </table>
+                                </center>
+                            </div>
+                        <button onclick="close_localdishe_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_localdishe_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="localdishe-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="localdishe-orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_localdishe_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="localdishe-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="localdishe-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_localdishe_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_localdishe_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="localdishe-orders-received-from-to-div">
+                <button  onclick="show_localdishe_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="localdishe-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="localdishe-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_localdishe_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="localdishe-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="localdishe-from-to-all-tbody"></tbody>
+                        </table>
+                    </center>
+                    <button onclick="close_localdishe_orders_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_localdishe_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="localdishe-orders-received-last-week-div">
+                <button onclick="show_localdishe_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="localdishe-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_localdishe_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="localdishe-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="localdishe-last-week-all-div" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="localdishe-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_localdishe_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_localdishe_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="localdishe-orders-received-this-month-div">
+                <button  onclick="show_localdishe_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="localdishe-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_localdishe_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="localdishe-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="localdishe-this-month-all-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="localdishe-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_localdishe_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_localdishe_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="localdishe-orders-received-last-month-div">
+            <button onclick="show_localdishe_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="localdishe-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_localdishe_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="localdishe-orders-received-loader-last-month-all" class="loader"></div>
+                        <div id="localdishe-last-month-all-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="localdishe-last-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                    <button onclick="close_localdishe_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+        </div>
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		SOFT DRINKS RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_soft_drinks_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" >Soft Drinks </button><br><br>
+        <div id="soft-drinks-orders-received-root-div">
+            <button onclick="show_soft_drinks_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="soft-drinks-orders-received-view-all-div">
+            <button onclick=" fetch_soft_drinks_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="soft-drinks-orders-received-loader-all" class="loader"></div>
+            <div id="soft-drinks-show-all-tbody-div">
+                <center>
+                    <table class=" w3-bordered user-scrolling-table">
+                        <tbody id="soft-drinks-show-all-tbody"></tbody>
+                    </table>
+                </center>
+            </div>
+            <button onclick="close_soft_drinks_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_soft_drinks_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="soft-drinks-orders-received-date-div">
+                <button onclick="show_soft_drinks_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="soft-drinks-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_soft_drinks_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="soft-drinks-orders-received-loader-date-today" class="loader"></div>
+                            <div id="orders-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="soft-drinks-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_soft_drinks_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_soft_drinks_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="soft-drinks-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="soft-drink-orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_soft_drinks_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="soft-drinks-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="soft-drinks-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_soft_drinks_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_soft_drinks_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="soft-drinks-orders-received-from-to-div">
+                <button  onclick="show_soft_drinks_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="soft-drinks-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="soft-drinks-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_soft_drinks_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="soft-drinks-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="soft-drinks-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_soft_drinks_orders_received_from_to_week_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_soft_drinks_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="soft-drinks-orders-received-last-week-div">
+                <button onclick="show_soft_drinks_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="soft-drinks-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_soft_drinks_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="soft-drinks-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="last-week-all-grand-child" >
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="soft-drinks-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_soft_drinks_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_soft_drinks_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="soft-drinks-orders-received-this-month-div">
+                <button  onclick="show_soft_drinks_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="soft-drinks-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_soft_drinks_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="soft-drinks-orders-received-loader-this-month-all" class="loader"></div>
+                        <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="soft-drinks-this-month-all-tbody"></tbody>
+                            </table>
+                        </center>
+                        <button onclick="close_soft_drinks_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_soft_drinks_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="soft-drinks-orders-received-last-month-div">
+            <button onclick="show_soft_drinks_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="soft-drinks-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_soft_drinks_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="soft-drinks-orders-received-loader-last-month-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="soft-drinks-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_soft_drinks_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		FRESH DRINKS RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_fresh_drinks_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" >Fresh Drinks </button><br><br>
+        <div id="fresh-drinks-orders-received-root-div">
+            <button onclick="show_fresh_drinks_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="fresh-drinks-orders-received-view-all-div">
+            <button onclick=" fetch_fresh_drinks_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="fresh-drinks-orders-received-loader-all" class="loader"></div>
+            <div id="fresh-drinks-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="fresh-drinks-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_fresh_drinks_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_fresh_drinks_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="fresh-drinks-orders-received-date-div">
+                <button onclick="show_fresh_drinks_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="fresh-drinks-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_fresh_drinks_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="fresh-drinks-orders-received-loader-date-today" class="loader"></div>
+                            <div id="orders-view-by-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="fresh-drinks-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_fresh_drinks_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_fresh_drinks_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="fresh-drinks-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="fresh-drink-orders-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_fresh_drinks_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="fresh-drinks-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="fresh-drinks-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_fresh_drinks_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_fresh_drinks_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="fresh-drinks-orders-received-from-to-div">
+                <button  onclick="show_fresh_drinks_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="fresh-drinks-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="fresh-drinks-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_fresh_drinks_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="fresh-drinks-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="fresh-drinks-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_fresh_drinks_orders_received_from_to_week_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_fresh_drinks_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="fresh-drinks-orders-received-last-week-div">
+                <button onclick="show_fresh_drinks_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="fresh-drinks-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_fresh_drinks_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="fresh-drinks-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="last-week-all-grand-child" >
+                                <center>
+                                    <table class=" w3-bordered user-scrolling-table">
+                                        <tbody id="fresh-drinks-last-week-all-tbody"></tbody>
+                                    </table>
+                                </center>
+                            </div>
+                        <button onclick="close_fresh_drinks_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_fresh_drinks_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="fresh-drinks-orders-received-this-month-div">
+                <button  onclick="show_fresh_drinks_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="fresh-drinks-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_fresh_drinks_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="fresh-drinks-orders-received-loader-this-month-all" class="loader"></div>
+                            <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="fresh-drinks-this-month-all-tbody"></tbody>
+                                </table>
+                            </center>
+                        <button onclick="close_fresh_drinks_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_fresh_drinks_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="fresh-drinks-orders-received-last-month-div">
+            <button onclick="show_fresh_drinks_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="fresh-drinks-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_fresh_drinks_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="fresh-drinks-orders-received-loader-last-month-all" class="loader"></div>
+                        <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="fresh-drinks-last-month-all-tbody"></tbody>
+                            </table>
+                        </center>
+                    <button onclick="close_fresh_drinks_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+
+
+        </div>
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		BREAK FAST EGG RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_breakfast_egg_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Egg </button><br><br>
+        <div id="breakfast-egg-orders-received-root-div">
+            <button onclick="show_breakfast_egg_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="breakfast-egg-orders-received-view-all-div">
+            <button onclick=" fetch_breakfast_egg_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="breakfast-egg-orders-received-loader-all" class="loader"></div>
+            <div id="breakfast-egg-show-all-tbody-div">
+                <center>
+                    <table class=" w3-bordered user-scrolling-table">
+                        <tbody id="breakfast-egg-show-all-tbody"></tbody>
+                    </table>
+                </center>
+            </div>
+            <button onclick="close_breakfast_egg_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_egg_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="breakfast-egg-orders-received-date-div">
+                <button onclick="show_breakfast_egg_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="breakfast-egg-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_breakfast_egg_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-egg-orders-received-loader-date-today" class="loader"></div>
+                            <div id="breakfast-egg-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-egg-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_egg_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_breakfast_egg_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="breakfast-egg-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="breakfast-egg-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_breakfast_egg_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="breakfast-egg-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-egg-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_egg_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_breakfast_egg_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="breakfast-egg-orders-received-from-to-div">
+                <button  onclick="show_breakfast_egg_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="breakfast-egg-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="breakfast-egg-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_breakfast_egg_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-egg-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-egg-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_breakfast_egg_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_egg_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="breakfast-egg-orders-received-last-week-div">
+                <button onclick="show_breakfast_egg_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-egg-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_breakfast_egg_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="breakfast-egg-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="breakfast-egg-last-week-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-egg-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_egg_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_egg_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="breakfast-egg-orders-received-this-month-div">
+                <button  onclick="show_breakfast_egg_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-egg-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_breakfast_egg_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="breakfast-egg-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="breakfast-egg-this-month-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-egg-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_egg_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_egg_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="breakfast-egg-orders-received-last-month-div">
+            <button onclick="show_breakfast_egg_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="breakfast-egg-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_breakfast_egg_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-egg-orders-received-loader-last-month-all" class="loader"></div>
+                    <div id="breakfast-egg-last-month-div" >
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-egg-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    </div>
+                    <button onclick="close_breakfast_egg_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+        </div>
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		BREAK FAST TEAS RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_breakfast_teas_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Teas </button><br><br>
+        <div id="breakfast-teas-orders-received-root-div">
+            <button onclick="show_breakfast_teas_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="breakfast-teas-orders-received-view-all-div">
+            <button onclick=" fetch_breakfast_teas_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="breakfast-teas-orders-received-loader-all" class="loader"></div>
+            <div id="breakfast-teas-show-all-tbody-div">
+                <center>
+                <table class=" w3-bordered user-scrolling-table">
+                    <tbody id="breakfast-teas-show-all-tbody"></tbody>
+                </table>
+                </center>
+            </div>
+            <button onclick="close_breakfast_teas_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_teas_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="breakfast-teas-orders-received-date-div">
+                <button onclick="show_breakfast_teas_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="breakfast-teas-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_breakfast_teas_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-teas-orders-received-loader-date-today" class="loader"></div>
+                            <div id="breakfast-teas-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-teas-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_teas_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_breakfast_teas_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="breakfast-teas-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="breakfast-teas-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_breakfast_teas_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="breakfast-teas-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-teas-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_teas_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_breakfast_teas_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="breakfast-teas-orders-received-from-to-div">
+                <button  onclick="show_breakfast_teas_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="breakfast-teas-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="breakfast-teas-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_breakfast_teas_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-teas-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-teas-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_breakfast_teas_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_teas_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="breakfast-teas-orders-received-last-week-div">
+                <button onclick="show_breakfast_teas_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-teas-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_breakfast_teas_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="breakfast-teas-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="breakfast-teas-last-week-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-teas-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_teas_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_teas_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="breakfast-teas-orders-received-this-month-div">
+                <button  onclick="show_breakfast_teas_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-teas-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_breakfast_teas_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="breakfast-teas-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="breakfast-teas-this-month-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-teas-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_teas_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_teas_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="breakfast-teas-orders-received-last-month-div">
+            <button onclick="show_breakfast_teas_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="breakfast-teas-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_breakfast_teas_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-teas-orders-received-loader-last-month-all" class="loader"></div>
+                    <div id="breakfast-teas-last-month-div" >
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-teas-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    </div>
+                    <button onclick="close_breakfast_teas_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @
+        @		BREAK FAST OTHER RECEIVED ORDERS
+        @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        -->
+        <button onclick="Show_breakfast_other_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Other </button><br><br>
+        <div id="breakfast-other-orders-received-root-div">
+            <button onclick="show_breakfast_other_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
+            <div id="breakfast-other-orders-received-view-all-div">
+            <button onclick=" fetch_breakfast_other_orders_received_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+            <div id="breakfast-other-orders-received-loader-all" class="loader"></div>
+            <div id="breakfast-other-show-all-tbody-div">
+                <center>
+                    <table class=" w3-bordered user-scrolling-table">
+                        <tbody id="breakfast-other-show-all-tbody"></tbody>
+                    </table>
+                </center>
+            </div>
+            <button onclick="close_breakfast_other_orders_received_view_all_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_other_orders_received_view_date_div ()" class="  view-btns-children entries_page_fonts">By Date</button> <br><br>
+            <div id="breakfast-other-orders-received-date-div">
+                <button onclick="show_breakfast_other_orders_received_date_today_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">Today</button>
+                    <div id="breakfast-other-orders-received-date-today-grand-child-div" >
+                        <button onclick=" fetch_breakfast_other_orders_received_date_today_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-other-orders-received-loader-date-today" class="loader"></div>
+                            <div id="breakfast-other-date-today-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-other-date-today-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_other_orders_received_date_today_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                <!-- .......................................... -->
+                <button onclick="show_breakfast_other_orders_received_date_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">Date</button>
+                    <div id="breakfast-other-orders-received-date-grand-child-div" >
+                        <form class="orders_from_to_form" id="breakfast-other-date-date-form" >
+                            <label>Date</label>
+                            <input class="orders_view_form_input" type="date" name="date" onchange="fetch_breakfast_other_orders_received_date_date_data ()" ><br>
+                        </form>
+                        <button class="agency-show-btn entries_page_fonts"  ></button>
+                        <div id="breakfast-other-orders-received-loader-date-date" class="loader"></div>
+                        <div id="date-date-div" >
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-other-date-date-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_other_orders_received_date_grand_child_div ()" class="close-child-btn entries_page_fonts">Close</button>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+
+            <button onclick="show_breakfast_other_orders_received_from_to_week_div ()" class="view-btns-children entries_page_fonts">From -- To</button> <br><br>
+            <div id="breakfast-other-orders-received-from-to-div">
+                <button  onclick="show_breakfast_other_orders_received_from_to_grand_child_div ()" class="view-btns-grand-child entries_page_fonts">All</button>
+                <div id="breakfast-other-orders-received-from-to-all-grand-child-div">
+                    <form class="orders_from_to_form" id="breakfast-other-from-to-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label> From </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="from">
+                                </td>
+                                <td>
+                                    <label> To </label>
+                                    <input class="orders_view_form_input" type="date" autocomplete="off" name="to">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                <div id="from-to-div">
+                    <button onclick="fetch_breakfast_other_orders_received_from_to_all_data () " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-other-orders-received-loader-from-to-all" class="loader"></div>
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-other-from-to-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    <button onclick="close_breakfast_other_received_from_to_grand_child_div ()" class="close-child-btn entries_page_fonts" >Close</button>
+                </div>
+                </div><br><br><br>
+            </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_other_orders_received_view_last_week_div ()" class=" view-btns-children entries_page_fonts">Last Week</button> <br><br>
+            <div id="breakfast-other-orders-received-last-week-div">
+                <button onclick="show_breakfast_others_orders_received_last_week_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-other-orders-received-last-week-all-grand-child-div">
+                        <button onclick="fetch_breakfast_other_orders_received_last_week_all_data ()  " class="agency-show-btn entries_page_fonts" >Show</button><br><br>
+                            <div id="breakfast-other-orders-received-loader-last-week-all" class="loader"></div>
+                            <div id="breakfast-other-last-week-div">
+                                <center>
+                                <table class=" w3-bordered user-scrolling-table">
+                                    <tbody id="breakfast-other-last-week-all-tbody"></tbody>
+                                </table>
+                                </center>
+                            </div>
+                        <button onclick="close_breakfast_other_orders_received_last_week_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+                </div>
+
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_other_orders_received_this_month_grand_child_div ()" class="view-btns-children entries_page_fonts">This Month</button> <br><br>
+            <div id="breakfast-other-orders-received-this-month-div">
+                <button  onclick="show_breakfast_other_orders_received_this_month_all_grand_child_div()" class="view-btns-grand-child   entries_page_fonts">All</button>
+                    <div id="breakfast-other-orders-received-this-month-all-grand-child-div">
+                        <button onclick=" fetch_breakfast_other_orders_received_this_month_all_data ()"   class="agency-show-btn entries_page_fonts"  >Show</button>
+                    <div id="breakfast-other-orders-received-loader-this-month-all" class="loader"></div>
+                        <div id="breakfast-other-this-month-div">
+                            <center>
+                            <table class=" w3-bordered user-scrolling-table">
+                                <tbody id="breakfast-other-this-month-all-tbody"></tbody>
+                            </table>
+                            </center>
+                        </div>
+                        <button onclick="close_breakfast_other_orders_received_this_month_all_grand_child_div ()"  class="close-child-btn entries_page_fonts" >Close</button><br><br>
+                    </div><br><br>
+            </div>
+            <!-- ===================================================== -->
+            <button onclick="show_breakfast_other_orders_received_view_last_month_div ()" class="view-btns-children  entries_page_fonts">Last Month</button> <br><br>
+            <div id="breakfast-other-orders-received-last-month-div">
+            <button onclick="show_breakfast_other_orders_received_last_month_all_grand_child_div ()" class="view-btns-grand-child   entries_page_fonts">All</button><br><br>
+                <div id="breakfast-other-orders-received-last-month-by-all-grand-child-div">
+                    <button onclick="fetch_breakfast_other_orders_received_last_month_all_data ()  " class="agency-show-btn entries_page_fonts"  >Show</button>
+                        <div id="breakfast-other-orders-received-loader-last-month-all" class="loader"></div>
+                    <div id="breakfast-other-last-month-div" >
+                        <center>
+                        <table class=" w3-bordered user-scrolling-table">
+                            <tbody id="breakfast-other-last-month-all-tbody"></tbody>
+                        </table>
+                        </center>
+                    </div>
+                    <button onclick="close_breakfast_other_orders_received_last_month_all_grand_child_div ()" class="close-child-btn  entries_page_fonts" >Close</button><br><br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+            </div> <!-- stainner-root-div -->
+
+            </div><br>
+            <button class="back-btn" onclick="javascript:history.go(-1)"><< Back</button><br><br>
+    </center>
+    </body>
+    </html>
