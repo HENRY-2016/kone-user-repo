@@ -41,11 +41,12 @@ function do_logic ()
     <div  id= "Navigetion" class="header">
             <!-- ======= CLOSE ====== -->
         <span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
-            <div id="our-avenues-menu-label-div">
+            <!-- <div id="our-avenues-menu-label-div">
                 <label class="our-avenues-label" > Our Avenues</label>
-            </div><br>
+            </div><br> -->
             <div id="menu-items-div">
                 <center>
+                   <a><label class="our-avenues-label" onclick="Load_index ()" >Dashboard</label></a>
                     <a><label onclick="Load_food_view ()">Food</label></a>
                     <a><label onclick="Load_chips_view ()">Chips</label></a>
                     <a><label onclick="Load_piloa_view ()">Piloa</label></a>
@@ -66,7 +67,7 @@ function do_logic ()
             </div><br>
     </div>
     <div id="NaviDiv">
-        <label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+        <label class="open-side-navi-label" onclick="openMenus()">&#9776;</label>
         <label class="kone-label">"Taste the difference"</label>
     </div>
 <script>
@@ -77,24 +78,34 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 </div> <!-- main-header-->
 
 <div id="main-body" > <!-- Begin main-body div -->
+    <center>
+		<div id="alert-box-display-area"></div>
+			<div id="alert-box">
+				<div>
+					<div id="alert-box-header"></div>
+					<div id="alert-box-body"></div>
+					<div id="alert-box-footer"></div>
+				</div>
+			</div>
+	</center>
     <br>
     <center>
-        <table class=" w3-blue status-table">
+        <table class=" status-table">
             <tr class="table-headings-tr"> <th>Avenues</th><th>Orders </th> </tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Chips</td> <td class="orders-status-td"><span id="chips-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Piloa</td> <td class="orders-status-td"><span  id="piloa-status-id" class="w3-badge w3-green w3-padding-small" >0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Salads</td> <td class="orders-status-td"><span  id="salads-status-id" class="w3-badge w3-green w3-padding-small" >0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Chicken</td> <td class="orders-status-td"><span id="chicken-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Luwombo</td> <td class="orders-status-td"><span id="luwombo-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Goat Meat</td> <td class="orders-status-td"><span id="goatmeat-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Beverages</td> <td class="orders-status-td"><span id="beverages-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Beef Liver</td> <td class="orders-status-td"><span id="beefliver-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Local Dishe</td> <td class="orders-status-td"><span id="localdishe-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Soft Drinks </td> <td class="orders-status-td"><span id="softdrink-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">Fresh Drinks </td> <td class="orders-status-td"><span id="freshdrink-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Egg</td> <td class="orders-status-td"><span id="breakfast-egg-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Teas</td> <td class="orders-status-td"><span id="breakfast-teas-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
-            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Other</td> <td class="orders-status-td"><span id="breakfast-other-status-id" class="w3-badge w3-green w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Chips</td> <td class="orders-status-td"><span id="chips-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Piloa</td> <td class="orders-status-td"><span  id="piloa-status-id" class="w3-badge w3-blue w3-padding-small" >0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Salads</td> <td class="orders-status-td"><span  id="salads-status-id" class="w3-badge w3-blue w3-padding-small" >0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Chicken</td> <td class="orders-status-td"><span id="chicken-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Luwombo</td> <td class="orders-status-td"><span id="luwombo-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Goat Meat</td> <td class="orders-status-td"><span id="goatmeat-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Beverages</td> <td class="orders-status-td"><span id="beverages-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Beef Liver</td> <td class="orders-status-td"><span id="beefliver-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Local Dishe</td> <td class="orders-status-td"><span id="localdishe-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Soft Drinks </td> <td class="orders-status-td"><span id="softdrink-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">Fresh Drinks </td> <td class="orders-status-td"><span id="freshdrink-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Egg</td> <td class="orders-status-td"><span id="breakfast-egg-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Teas</td> <td class="orders-status-td"><span id="breakfast-teas-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
+            <tr class="orders-table-tr"><td class="orders-avenue-td">BreakFast Other</td> <td class="orders-status-td"><span id="breakfast-other-status-id" class="w3-badge w3-blue w3-padding-small">0</span></td></tr>
         </table>
     </center><br>
     <center><button class="menu_btns fontstyles" onclick="NewOrdersLogic ()"> New Orders</button></center>

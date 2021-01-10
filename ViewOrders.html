@@ -49,14 +49,15 @@ function Set_Up_Every_Thing ()
     <div  id= "Navigetion" class="header">
         <!-- ======= CLOSE ====== -->
     <span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
-        <div id="our-avenues-menu-label-div">
+        <!-- <div id="our-avenues-menu-label-div">
             <label class="our-avenues-label" onclick="Load_index ()" > Home</label>
         </div><br>
         <div id="our-avenues-menu-label-div">
             <label class="our-avenues-label" > Our Avenues</label>
-        </div><br>
+        </div><br> -->
         <div id="menu-items-div">
             <center>
+                <a><label class="our-avenues-label" onclick="Load_index ()" >Dashboard</label></a>
                 <a><label onclick="Load_food_view ()">Food</label></a>
                 <a><label onclick="Load_chips_view ()">Chips</label></a>
                 <a><label onclick="Load_piloa_view ()">Piloa</label></a>
@@ -77,7 +78,7 @@ function Set_Up_Every_Thing ()
         </div><br>
 </div>
 <div id="NaviDiv">
-    <label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+    <label class="open-side-navi-label" onclick="openMenus()">&#9776;</label>
     <label class="kone-label">"Taste the difference"</label>
 </div>
 <script>
@@ -86,6 +87,16 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 </script>
 
 </div> <!-- main-header-->
+<center>
+    <div id="alert-box-display-area"></div>
+        <div id="alert-box">
+            <div>
+                <div id="alert-box-header"></div>
+                <div id="alert-box-body"></div>
+                <div id="alert-box-footer"></div>
+            </div>
+        </div>
+</center>
         <center>
                 <!--
             @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -96,7 +107,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
 
             -->
         <br>
-        <button onclick="Show_chips_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Chips </button><br><br>
+        <button onclick="Show_chips_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Chips </button><br><br>
             <div id="chips-orders-received-root-div">
                 <button onclick="show_chips_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
                     <div id="chips-orders-received-view-all-div">
@@ -240,7 +251,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_piloa_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Piloa </button><br><br>
+        <button onclick="Show_piloa_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Piloa </button><br><br>
         <div id="piloa-orders-received-root-div">
             <button onclick="show_piloa_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="piloa-orders-received-view-all-div">
@@ -382,7 +393,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_salads_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Salads </button><br><br>
+        <button onclick="Show_salads_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Salads </button><br><br>
         <div id="salads-orders-received-root-div">
             <button onclick="show_salads_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="salads-orders-received-view-all-div">
@@ -526,7 +537,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_chicken_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Chicken </button><br><br>
+        <button onclick="Show_chicken_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Chicken </button><br><br>
         <div id="chicken-orders-received-root-div">
             <button onclick="show_chicken_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="chicken-orders-received-view-all-div">
@@ -673,7 +684,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_luwombo_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Luwombo </button><br><br>
+        <button onclick="Show_luwombo_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Luwombo </button><br><br>
         <div id="luwombo-orders-received-root-div">
 
             <button onclick="show_luwombo_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
@@ -819,7 +830,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_beverages_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Beverages </button><br><br>
+        <button onclick="Show_beverages_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Beverages </button><br><br>
         <div id="beverages-orders-received-root-div">
             <button onclick="show_beverages_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="beverages-orders-received-view-all-div">
@@ -967,7 +978,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_goatmeat_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Goat's Meat </button><br><br>
+        <button onclick="Show_goatmeat_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Goat's Meat </button><br><br>
         <div id="goatmeat-orders-received-root-div">
             <button onclick="show_goatmeat_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="goatmeat-orders-received-view-all-div">
@@ -1114,7 +1125,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_beefliver_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Beef / Liver </button><br><br>
+        <button onclick="Show_beefliver_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Beef / Liver </button><br><br>
         <div id="beefliver-orders-received-root-div">
             <button onclick="show_beefliver_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="beefliver-orders-received-view-all-div">
@@ -1260,7 +1271,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_localdishe_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Local Dishe </button><br><br>
+        <button onclick="Show_localdishe_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Local Dishe </button><br><br>
         <div id="localdishe-orders-received-root-div">
 
             <button onclick="show_localdishe_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
@@ -1407,7 +1418,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_soft_drinks_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" >Soft Drinks </button><br><br>
+        <button onclick="Show_soft_drinks_orders_received_root_div ()" class="menu_btns entries_page_fonts" >Soft Drinks </button><br><br>
         <div id="soft-drinks-orders-received-root-div">
             <button onclick="show_soft_drinks_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="soft-drinks-orders-received-view-all-div">
@@ -1553,7 +1564,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_fresh_drinks_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" >Fresh Drinks </button><br><br>
+        <button onclick="Show_fresh_drinks_orders_received_root_div ()" class="menu_btns entries_page_fonts" >Fresh Drinks </button><br><br>
         <div id="fresh-drinks-orders-received-root-div">
             <button onclick="show_fresh_drinks_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="fresh-drinks-orders-received-view-all-div">
@@ -1696,7 +1707,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_breakfast_egg_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Egg </button><br><br>
+        <button onclick="Show_breakfast_egg_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Break Fast Egg </button><br><br>
         <div id="breakfast-egg-orders-received-root-div">
             <button onclick="show_breakfast_egg_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="breakfast-egg-orders-received-view-all-div">
@@ -1841,7 +1852,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_breakfast_teas_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Teas </button><br><br>
+        <button onclick="Show_breakfast_teas_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Break Fast Teas </button><br><br>
         <div id="breakfast-teas-orders-received-root-div">
             <button onclick="show_breakfast_teas_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="breakfast-teas-orders-received-view-all-div">
@@ -1987,7 +1998,7 @@ function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
         -->
-        <button onclick="Show_breakfast_other_orders_received_root_div ()" class="clour_types_btn entries_page_fonts" > Break Fast Other </button><br><br>
+        <button onclick="Show_breakfast_other_orders_received_root_div ()" class="menu_btns entries_page_fonts" > Break Fast Other </button><br><br>
         <div id="breakfast-other-orders-received-root-div">
             <button onclick="show_breakfast_other_orders_received_view_all_div ()" class="view-btns-children entries_page_fonts">View all</button> <br><br>
             <div id="breakfast-other-orders-received-view-all-div">
